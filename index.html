@@ -19,9 +19,15 @@
         />
       </header>
       <main class="content">
-        <form class="expense__form">
+        <form class="expense__form" id="expense__form" novalidate>
           <h2>Add Expense</h2>
-          <label class="expense__form_label" for="category">Category</label>
+          <label
+            class="expense__form_label"
+            for="category"
+            required
+            aria-describedby="category-error"
+            >Category</label
+          >
           <select class="expense__form_select" id="category" required>
             <option value="">Select Category</option>
             <option value="Food">Food</option>
@@ -32,6 +38,8 @@
             <option value="Health">Health</option>
             <option value="Other">Other</option>
           </select>
+          <span class="form__error" id="category-error"></span>
+
           <label class="expense__form_label" for="amount">Amount</label>
           <input
             class="expense__form_input"
@@ -39,10 +47,19 @@
             id="amount"
             placeholder="Enter amount"
             required
+            aria-describedby="amount-error"
           />
+          <span class="form__error" id="amount-error"></span>
 
           <label class="expense__form_label" for="date">Date</label>
-          <input class="expense__form_input" type="date" id="date" required />
+          <input
+            class="expense__form_input"
+            type="date"
+            id="date"
+            required
+            aria-describedby="date-error"
+          />
+          <span class="form__error" id="date-error"></span>
 
           <label class="expense__form_label" for="description"
             >Description</label
@@ -52,7 +69,10 @@
             type="text"
             id="description"
             placeholder="Optional description"
+            maxlength="120"
+            aria-describedby="description-error"
           />
+          <span class="form__error" id="description-error"></span>
 
           <button type="submit" id="expense__form_add-btn">Add Expense</button>
         </form>
