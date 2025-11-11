@@ -6,6 +6,7 @@
     <meta name="description" content="Smart Budget Planner website" />
     <meta name="keywords" content="html, css, javascript." />
     <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <title>Smart Budget Planner</title>
   </head>
   <body>
@@ -18,6 +19,7 @@
         />
       </header>
       <main class="content">
+        
         <form id="income__form">
           <label class="income__form_label" for="income">Monthly Income ($)</label>
           <input
@@ -31,7 +33,13 @@
         </form>
         <form class="expense__form">
           <h2>Add Expense</h2>
-          <label class="expense__form_label" for="category">Category</label>
+          <label
+            class="expense__form_label"
+            for="category"
+            required
+            aria-describedby="category-error"
+            >Category</label
+          >
           <select class="expense__form_select" id="category" required>
             <option value="">Select Category</option>
             <option value="Restaurant">Restaurant</option>
@@ -44,6 +52,8 @@
             <option value="Retail">Retail</option>
             <option value="Other">Other</option>
           </select>
+          <span class="form__error" id="category-error"></span>
+
           <label class="expense__form_label" for="amount">Amount</label>
           <input
             class="expense__form_input"
@@ -51,10 +61,19 @@
             id="amount"
             placeholder="Enter amount"
             required
+            aria-describedby="amount-error"
           />
+          <span class="form__error" id="amount-error"></span>
 
           <label class="expense__form_label" for="date">Date</label>
-          <input class="expense__form_input" type="date" id="date" required />
+          <input
+            class="expense__form_input"
+            type="date"
+            id="date"
+            required
+            aria-describedby="date-error"
+          />
+          <span class="form__error" id="date-error"></span>
 
           <label class="expense__form_label" for="description"
             >Description</label
@@ -64,7 +83,10 @@
             type="text"
             id="description"
             placeholder="Optional description"
+            maxlength="120"
+            aria-describedby="description-error"
           />
+          <span class="form__error" id="description-error"></span>
 
           <button type="submit" id="expense__form_add-btn">Add Expense</button>
         </form>
