@@ -1,0 +1,11 @@
+.header {
+  background-color: olive;
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0;
+}
+.header__logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 40%;
+}
