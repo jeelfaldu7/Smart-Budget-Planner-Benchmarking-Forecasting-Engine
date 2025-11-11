@@ -18,17 +18,30 @@
         />
       </header>
       <main class="content">
+        <form id="income__form">
+          <label class="income__form_label" for="income">Monthly Income ($)</label>
+          <input
+          class="income__form_input"
+            type="number"
+            id="income"
+            placeholder="Enter your income"
+            required
+          />
+          <button type="submit" class="income__form_submit-btn">Save Income</button>
+        </form>
         <form class="expense__form">
           <h2>Add Expense</h2>
           <label class="expense__form_label" for="category">Category</label>
           <select class="expense__form_select" id="category" required>
             <option value="">Select Category</option>
-            <option value="Food">Food</option>
-            <option value="Transportation">Transportation</option>
+            <option value="Restaurant">Restaurant</option>
+            <option value="Grocery">Grocery</option>
             <option value="Entertainment">Entertainment</option>
-            <option value="Shopping">Shopping</option>
-            <option value="Utilities">Utilities</option>
-            <option value="Health">Health</option>
+            <option value="Gas">Gas</option>
+            <option value="Education">Education</option>
+            <option value="Healthcare">Healthcare</option>
+            <option value="Travel">Travel</option>
+            <option value="Retail">Retail</option>
             <option value="Other">Other</option>
           </select>
           <label class="expense__form_label" for="amount">Amount</label>
@@ -56,6 +69,7 @@
           <button type="submit" id="expense__form_add-btn">Add Expense</button>
         </form>
         <div id="expense__list" class="expense__list"></div>
+        <div id="expense__totalss_container"></div>
       </main>
       <script type="module" src="./pages/index.js"></script>
     </div>

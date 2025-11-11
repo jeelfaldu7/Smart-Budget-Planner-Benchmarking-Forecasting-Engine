@@ -2,3 +2,5 @@
 @import url("../vendor/fonts.css");
 @import url("../blocks/header.css");
 @import url("../blocks/expense.css");
+@import url("../blocks/income.css");
+@import url("../blocks/totals.css");

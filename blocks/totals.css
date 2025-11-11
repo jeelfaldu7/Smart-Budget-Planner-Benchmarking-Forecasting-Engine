@@ -1,0 +1,30 @@
+.totals__container {
+  margin-top: 25px;
+  padding: 15px;
+  background: #f8fafc;
+  border-radius: 10px;
+  border: 1px solid #e1e5ee;
+}
+.totals__container h3 {
+  margin-top: 0;
+  color: #222;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 6px;
+}
+.totals__row {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+  font-size: 15px;
+}
+.totals__row strong {
+  color: #333;
+}
+.above {
+  color: #e53935;
+  font-weight: 600;
+}
+.below {
+  color: #2e7d32;
+  font-weight: 600;
+}
