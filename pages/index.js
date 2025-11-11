@@ -2,30 +2,34 @@ import "../pages/index.css";
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("expense__form");
+  const incomeForm = document.getElementById("income__form");
+  const countryForm = document.getElementById("country__form");
   const expenseList = document.getElementById("expense__list");
-  const category = document.getElementById("category");
-  const amount = document.getElementById("amount");
-  const date = document.getElementById("date");
-  const description = document.getElementById("description");
-  const totalsContainer = document.createElement("div");
-  totalsContainer.classList.add("totals__container");
-  expenseList.after(totalsContainer);
+  const totalsContainer = document.getElementById("totals__container");
+  const incomeInput = document.getElementById("income");
+  const countrySelect = document.getElementById("country");
+  const locationStatus = document.getElementById("location__status");
 
-  // Optional: load from localStorage
+  //  load from localStorage
   let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+  let userIncome = parseFloat(localStorage.getItem("income")) || 0;
   let benchmarkData = {};
+  let selectedCountry = localStorage.getItem("country") || "";
+  let currencySymbol = "";
+  let chart = null;
+  let allData = {};
 
   // Load benchmark
-  fetch("Data-Science/notebook.ipynb")
+  fetch("Data-Science/all_country_user_data.json")
     .then((res) => res.json())
     .then((data) => {
-      benchmarkData = data["USA"].country_aggregate_data.categories;
-      renderExpenses();
+      allData = data;
+      detectUserCountry();
     })
     .catch((err) => console.error("Error loading benchmark:", err));
   // Render stored expenses
   renderExpenses();
-
+ // Add expense
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 

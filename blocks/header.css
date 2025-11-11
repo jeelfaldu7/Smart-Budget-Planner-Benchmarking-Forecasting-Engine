@@ -1,11 +1,27 @@
 .header {
-  background-color: olive;
+  background-color: #084f09;
   display: flex;
   flex-direction: row;
   padding: 10px 0;
 }
 .header__logo {
-  width: 60px;
-  height: 60px;
+  width: 90px;
+  height: 90px;
   border-radius: 40%;
+  margin-left: 10px;
+}
+.header__nav_bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-content: center;
+  margin-left: auto;
+  margin-right: 20px;
+}
+.header__nav_bar-item {
+  color: #fff;
+  cursor: pointer;
+  font-size: 25px;
 }
