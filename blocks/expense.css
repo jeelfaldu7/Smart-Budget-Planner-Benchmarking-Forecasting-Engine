@@ -1,65 +1,44 @@
-body {
-  background-color: #f5f7fb;
-  margin: 0;
-  padding: 0;
-}
-.content {
-  max-width: 600px;
-  margin: 40px auto;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  padding: 25px;
-}
-title {
-  text-align: center;
-  color: #222;
-  margin-bottom: 10px;
-}
 .expense__form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
-.expense__form h2 {
-  text-align: center;
-  color: #333;
-}
-.expense__form_label {
-  font-weight: 600;
-}
-.expense__form_input .expense__form_select {
-  padding: 8px 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
-}
-#expense__form_add-btn {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
+
+.expense__form input,
+.expense__form select {
   padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+button {
+  background-color: #85bb65; /* money green */
+  color: #ffffff;
+  border: none;
+  padding: 12px;
+  font-weight: bold;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 16px;
-  transition: background 0.3s;
+  transition: background-color 0.3s;
 }
-#expense__form_add-btn:hover {
-  background-color: #0056b3;
+
+button:hover {
+  background-color: #6ea556; /* darker green on hover */
 }
-.expense__list {
-  margin-top: 30px;
-}
+
+/* === LIST === */
 .expense__list_item {
   display: flex;
   justify-content: space-between;
-  background: #f0f4ff;
-  border-left: 4px solid #007bff;
-  padding: 10px 12px;
-  border-radius: 6px;
-  margin-bottom: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid #dddddd;
 }
-.expense__list_item span {
-  font-size: 14px;
-  color: #333;
+
+.above {
+  color: #ff8c42; /* orange for overspending */
+}
+
+.below {
+  color: #28a745; /* emerald for under budget */
 }

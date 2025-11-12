@@ -5,3 +5,17 @@
 @import url("../blocks/income.css");
 @import url("../blocks/totals.css");
 @import url("../blocks/location.css");
+@import url("../blocks/mainGrid.css");
+@import url("../blocks/user.css");
+@import url("../blocks/sideBar.css");
+body {
+  margin: 0;
+  background-color: #f5f7fb;
+  color: #333333;
+  overflow: hidden;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+}

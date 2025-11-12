@@ -11,6 +11,136 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="sidebar__logo">
+          <img src="./images/SBP_logo.png" alt="Smart Budget Planner Logo" />
+          <h2>SBP</h2>
+        </div>
+        <nav class="sidebar__nav">
+          <button class="sidebar__btn active" data-section="dashboard">
+            🏠 Dashboard
+          </button>
+          <button class="sidebar__btn" data-section="expenses">
+            💸 Expenses
+          </button>
+          <button class="sidebar__btn" data-section="budgets">
+            🎯 Budgets
+          </button>
+          <button class="sidebar__btn" data-section="reports">
+            📊 Reports
+          </button>
+        </nav>
+      </aside>
+
+      <main class="main">
+        <section id="dashboard" class="module active">
+          <h2>Dashboard Overview</h2>
+          <div class="module__content">
+            <div class="module__card">
+              <h3>User Summary</h3>
+              <div id="user__summary"></div>
+            </div>
+            <div class="module__card">
+              <h3>Income</h3>
+              <div id="income__summary">
+                <p>Monthly Income: <strong id="income__value">$0</strong></p>
+                <p>Total Expenses: <strong id="expense__total">$0</strong></p>
+                <p>
+                  Spending % of Income: <strong id="income__percent">0%</strong>
+                </p>
+                <form id="income__form">
+                  <label for="income__input">Update Income:</label>
+                  <input
+                    type="number"
+                    id="income"
+                    placeholder="Enter monthly income"
+                    required
+                  />
+                  <button type="submit">Save</button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Country & Location Section -->
+            <div class="module__card">
+              <h3>Location & Currency</h3>
+              <div id="location__summary">
+                <p>Detected Country: <strong id="country__name">—</strong></p>
+                <p>Currency: <strong id="currency__symbol">—</strong></p>
+              </div>
+            </div>
+
+            <!-- Insights -->
+            <div class="module__card">
+              <h3>Insights</h3>
+              <div id="insights__content">
+                <p>Loading personalized insights...</p>
+              </div>
+            </div>
+            <div class="module__card">
+              <h3>Spending Breakdown</h3>
+              <canvas id="pieChart" width="400" height="300"></canvas>
+            </div>
+          </div>
+        </section>
+
+        <section id="expenses" class="module">
+          <h2>Expenses</h2>
+          <div class="module__content">
+            <form id="expense__form" class="expense__form">
+              <label for="category">Category</label>
+              <select id="category" required>
+                <option value="">Select Category</option>
+                <option value="Restaurant">Restaurant</option>
+                <option value="Grocery">Grocery</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Gas">Gas</option>
+                <option value="Education">Education</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Travel">Travel</option>
+                <option value="Retail">Retail</option>
+              </select>
+              <label for="amount">Amount</label>
+              <input
+                type="number"
+                id="amount"
+                placeholder="Enter amount"
+                required
+              />
+              <label for="date">Date</label>
+              <input type="date" id="date" required />
+              <label for="description">Description</label>
+              <input
+                type="text"
+                id="description"
+                placeholder="Optional description"
+                maxlength="120"
+              />
+              <button type="submit" id="expense__form_add-btn">
+                Add Expense
+              </button>
+            </form>
+            <div id="expense__list" class="expense__list"></div>
+          </div>
+        </section>
+
+        <section id="budgets" class="module">
+          <h2>Budgets</h2>
+          <p>Set and track limits for each category.</p>
+        </section>
+
+        <section id="reports" class="module">
+          <h2>Reports</h2>
+          <p>Visual analytics of your spending trends.</p>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./pages/index.js"></script>
+  </body>
+
+  <!-- <body>
     <div class="page">
       <header class="header">
         <img
@@ -25,7 +155,50 @@
           <a href="#" class="header__nav_bar-item">Reports</a>
         </nav>
       </header>
-      <main class="main">
+      <main class="main__grid">
+        <aside class="sidebar">
+          <div class="sidebar__logo">
+            <img src="./images/SBP_logo.png" alt="Logo" />
+            <h2>SBP</h2>
+          </div>
+          <nav class="sidebar__nav">
+            <button class="sidebar__btn active" data-section="dashboard">
+              🏠 Dashboard
+            </button>
+            <button class="sidebar__btn" data-section="expenses">
+              💸 Expenses
+            </button>
+            <button class="sidebar__btn" data-section="budgets">
+              🎯 Budgets
+            </button>
+            <button class="sidebar__btn" data-section="reports">
+              📊 Reports
+            </button>
+          </nav>
+        </aside>
+        <section id="dashboard" class="dashboard__grid active">
+          <div class="grid__card user__card">
+            <h3>User Overview</h3>
+            <p id="user__summary__id"></p>
+            <div id="user__summary"></div>
+          </div>
+
+          <div class="grid__card totals__card">
+            <h3>Totals & Comparison</h3>
+            <div id="expense__totals_container"></div>
+          </div>
+
+          <div class="grid__card chart__card">
+            <h3>Spending Breakdown</h3>
+            <canvas id="pieChart"></canvas>
+          </div>
+
+          <div class="grid__card insights__card">
+            <h3>Insights</h3>
+            <div id="insights__content"></div>
+          </div>
+        </section>
+
         <section id="dashboard" class="content">
           <div id="location__status" class="location__status">
             <p class="location__status-message">Detecting your location...</p>
@@ -42,6 +215,30 @@
             <select id="user__select" required></select>
             <button type="submit">Load User</button>
           </form>
+          <div id="user__summary" class="user__summary">
+            <div class="user__summary__header">
+              <h3>User Overview</h3>
+              <p id="user__summary-id"></p>
+            </div>
+            <div class="user__summary__stats">
+              <div>
+                <h4>Total Spending</h4>
+                <p id="user__summary__total">—</p>
+              </div>
+              <div>
+                <h4>Top Category</h4>
+                <p id="user__summary__topcat">—</p>
+              </div>
+              <div>
+                <h4>Overspent Categories</h4>
+                <p id="user__summary__overspent">—</p>
+              </div>
+              <div>
+                <h4>Currency</h4>
+                <p id="user__summary__currency">—</p>
+              </div>
+            </div>
+          </div>
           <div
             id="expense__totals_container"
             class="expense__totals_container"
@@ -86,6 +283,10 @@
               <option value="Other">Other</option>
             </select>
             <span class="form__error" id="category-error"></span>
+            <label for="subcategory">Subcategory</label>
+            <select id="subcategory" required>
+              <option value="">Select Subcategory</option>
+            </select>
 
             <label class="expense__form_label" for="amount">Amount</label>
             <input
@@ -137,5 +338,5 @@
       </main>
       <script type="module" src="./pages/index.js"></script>
     </div>
-  </body>
+  </body> -->
 </html>
