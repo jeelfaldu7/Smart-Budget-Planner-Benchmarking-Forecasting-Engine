@@ -1,0 +1,23 @@
+.income__form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.income__form_input {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+.income__form_submit-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.income__form_submit-btn:hover {
+  background-color: #0056b3;
+}
