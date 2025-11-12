@@ -1,18 +1,11 @@
 import FormValidator from "../components/FormValidator.js";
+import { expenseValidationConfig } from "../utils/constants.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll(".header__nav_bar-item");
   const sections = document.querySelectorAll(".content");
 
   const expenseForm = document.getElementById("expense__form");
-
-  const expenseValidationConfig = {
-    inputSelector: ".expense__form-input, .expense__form-select",
-    submitButtonSelector: "#expense__form-btn",
-    inactiveButtonClass: "expense__form-btn_disabled",
-    inputErrorClass: "expense__form-input_invalid",
-    errorClass: "expense__form-error_visible",
-  };
 
   const expenseFormValidator = new FormValidator(
     expenseValidationConfig,
