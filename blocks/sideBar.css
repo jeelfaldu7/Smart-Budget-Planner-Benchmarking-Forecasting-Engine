@@ -1,0 +1,54 @@
+.sidebar {
+  width: 250px;
+  background-color: #1f2a44; /* navy */
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.sidebar__logo img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.sidebar__logo h2 {
+  margin-top: 10px;
+  font-size: 1.5rem;
+  color: #85bb65; /* money green */
+}
+
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.sidebar__btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  padding: 15px 20px;
+  text-align: left;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sidebar__btn:hover,
+.sidebar__btn.active {
+  background-color: #2ec4b6; /* teal accent */
+  color: #ffffff;
+}
+@media (max-width: 900px) {
+  .sidebar {
+    width: 200px;
+  }
+}
