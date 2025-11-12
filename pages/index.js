@@ -1,9 +1,21 @@
+import FormValidator from "../components/FormValidator.js";
+import { expenseValidationConfig } from "../utils/constants.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   /* ========= DOM ELEMENTS ========= */
   const sidebarButtons = document.querySelectorAll(".sidebar__btn");
   const allSections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll(".header__nav_bar-item");
+  const sections = document.querySelectorAll(".content");
 
-  // Dashboard elements
+  const expenseForm = document.getElementById("expense__form");
+
+  const expenseFormValidator = new FormValidator(
+    expenseValidationConfig,
+    expenseForm
+  );
+  expenseFormValidator.enableValidation();
+
   const incomeForm = document.getElementById("income__form");
   const incomeInput = document.getElementById("income");
   const incomeValue = document.getElementById("income__value");

@@ -263,15 +263,15 @@
             </button>
           </form>
           <form id="expense__form" class="expense__form">
-            <h2>Add Expense</h2>
+            <h2 class="expense__form-title">Add Expense</h2>
             <label
-              class="expense__form_label"
+              class="expense__form-label"
               for="category"
               required
               aria-describedby="category-error"
               >Category</label
             >
-            <select class="expense__form_select" id="category" required>
+            <select class="expense__form-select" id="category" required>
               <option value="">Select Category</option>
               <option value="Restaurant">Restaurant</option>
               <option value="Grocery">Grocery</option>
@@ -288,39 +288,45 @@
             <select id="subcategory" required>
               <option value="">Select Subcategory</option>
             </select>
+            <span class="expense__form-error" id="category-error"></span>
 
-            <label class="expense__form_label" for="amount">Amount</label>
+            <label class="expense__form-label" for="amount">Amount</label>
             <input
-              class="expense__form_input"
+              class="expense__form-input"
               type="number"
               id="amount"
               placeholder="Enter amount"
               required
               aria-describedby="amount-error"
             />
-            <span class="form__error" id="amount-error"></span>
-            <label class="expense__form_label" for="date">Date</label>
+            <span class="expense__form-error" id="amount-error"></span>
+            <label class="expense__form-label" for="date">Date</label>
             <input
-              class="expense__form_input"
+              class="expense__form-input"
               type="date"
               id="date"
               required
               aria-describedby="date-error"
             />
-            <span class="form__error" id="date-error"></span>
-            <label class="expense__form_label" for="description"
+            <span class="expense__form-error" id="date-error"></span>
+            <label class="expense__form-label" for="description"
               >Description</label
             >
             <input
-              class="expense__form_input"
+              class="expense__form-input"
               type="text"
               id="description"
               placeholder="Optional description"
               maxlength="120"
               aria-describedby="description-error"
             />
-            <span class="form__error" id="description-error"></span>
-            <button type="submit" id="expense__form_add-btn">
+            <span class="expense__form-error" id="description-error"></span>
+            <button
+              type="submit"
+              class="expense__form-btn"
+              id="expense__form-btn"
+              disabled
+            >
               Add Expense
             </button>
           </form>
