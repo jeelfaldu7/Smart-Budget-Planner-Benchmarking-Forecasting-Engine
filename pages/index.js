@@ -1,11 +1,9 @@
-import "../pages/index.css";
-
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("expense__form");
   const incomeForm = document.getElementById("income__form");
   const countryForm = document.getElementById("country__form");
   const expenseList = document.getElementById("expense__list");
-  const totalsContainer = document.getElementById("totals__container");
+  const totalsContainer = document.getElementById("expense__totals_container");
   const incomeInput = document.getElementById("income");
   const countrySelect = document.getElementById("country");
   const locationStatus = document.getElementById("location__status");
@@ -27,9 +25,44 @@ document.addEventListener("DOMContentLoaded", () => {
       detectUserCountry();
     })
     .catch((err) => console.error("Error loading benchmark:", err));
-  // Render stored expenses
-  renderExpenses();
- // Add expense
+
+  // Detect user location
+  async function detectUserCountry() {
+    locationStatus.innerHTML = "<p>Detecting your location...</p>";
+    try {
+      const response = await fetch("https://ipapi.co/json/");
+      const geo = await response.json();
+      const countryName = geo.country_name;
+      const simplified = countryName === "United States" ? "USA" : countryName;
+      selectedCountry = simplified;
+      countrySelect.innerHTML = "";
+      for (const c of Object.keys(allData)) {
+        const option = document.createElement("option");
+        option.value = c;
+        option.textContent = c;
+        if (c === simplified) option.selected = true;
+        countrySelect.appendChild(option);
+      }
+      // Show country info
+      locationStatus.innerHTML = `<p>🌎 Detected Country: <strong>${simplified}</strong></p>`;
+      countryForm.style.display = "flex";
+      localStorage.setItem("country", simplified);
+      loadCountryData(simplified);
+    } catch (error) {
+      console.error("Geo detection failed:", error);
+      locationStatus.innerHTML =
+        "<p>⚠️ Unable to detect your location automatically.</p>";
+      // Fallback: show dropdown manually
+      countryForm.style.display = "flex";
+      Object.keys(allData).forEach((c) => {
+        const option = document.createElement("option");
+        option.value = c;
+        option.textContent = c;
+        countrySelect.appendChild(option);
+      });
+    }
+  }
+  // Add expense
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
