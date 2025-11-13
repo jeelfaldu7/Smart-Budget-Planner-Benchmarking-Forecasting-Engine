@@ -18,7 +18,7 @@ Smart-Budget-Planner/
 │ └── one_country_preview.json
 │ │
 │ ├── dataset/ ← Source Kaggle data
-│ ├── notebook.ipynb ← Main data science notebook
+│ ├── November_Code_Jam_DS.ipynb ← Main data science notebook
 │
 ├── blocks/ ← Layout components (headers, sections)
 ├── components/ ← React components (forms, dashboard, charts)
@@ -128,3 +128,4 @@ cd Smart-Budget-Planner
 
 ## 📜 License
 This project is licensed under the MIT License.
+
