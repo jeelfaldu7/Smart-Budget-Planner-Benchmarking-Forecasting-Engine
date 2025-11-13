@@ -49,9 +49,8 @@ export default class FormValidator {
     const dateVal = date.value;
     const dateValid = !!dateVal && dateVal <= this._todayISO; // not in the future
 
-    // optional: empty OK, else at least 3 chars
     const descVal = description.value.trim();
-    const descriptionValid = descVal.length === 0 || descVal.length >= 3;
+    const descriptionValid = descVal.length === 0 || descVal.length >= 2;
 
     return !(categoryValid && amountValid && dateValid && descriptionValid);
   }

@@ -7,14 +7,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const allSections = document.querySelectorAll("section");
   const navLinks = document.querySelectorAll(".header__nav_bar-item");
   const sections = document.querySelectorAll(".content");
-
   const expenseForm = document.getElementById("expense__form");
 
-  const expenseFormValidator = new FormValidator(
-    expenseValidationConfig,
-    expenseForm
-  );
-  expenseFormValidator.enableValidation();
+  //FORM VALIDATION
+  // const expenseFormValidator = new FormValidator(
+  //   expenseValidationConfig,
+  //   expenseForm
+  // );
+  // expenseFormValidator.enableValidation();
 
   const incomeForm = document.getElementById("income__form");
   const incomeInput = document.getElementById("income");
