@@ -1,7 +1,7 @@
 export const expenseValidationConfig = {
-  inputSelector: ".expense__form-input, .expense__form-select",
+  inputSelector: "input, select",
   submitButtonSelector: "#expense__form_add-btn",
-  inactiveButtonClass: "expense__form-btn_disabled",
-  inputErrorClass: "expense__form-input_invalid",
-  errorClass: "expense__form-error_visible",
+  inactiveButtonClass: "button--disabled",
+  inputErrorClass: "input--error",
+  errorClass: "form__error"
 };

@@ -21,7 +21,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Expenses
   const expenseForm = document.getElementById("expense__form");
   const expenseList = document.getElementById("expense__list");
+  const userIdForm = document.getElementById("user__id__form");
+  const userIdInput = document.getElementById("user__id__input");
+  const userIdError = document.getElementById("user__id__error");
 
+  let selectedUser = localStorage.getItem("selectedUser") || null;
   // State variables
   let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
   let userIncome = parseFloat(localStorage.getItem("income")) || 0;
@@ -29,11 +33,21 @@ document.addEventListener("DOMContentLoaded", () => {
   let chartInstance = null;
   let allData = {};
   let currency = "";
-  const expenseFormValidator = new FormValidator(
-    expenseValidationConfig,
-    expenseForm
-  );
-  expenseFormValidator.enableValidation();
+
+  if (expenseForm) {
+    const validator = new FormValidator(expenseValidationConfig, expenseForm);
+    validator.enableValidation();
+  }
+  function createUserMapping(usersObj) {
+    const keys = Object.keys(usersObj);
+    const mapping = {};
+
+    keys.forEach((id, index) => {
+      mapping[(index + 1).toString()] = id; // "1" → "CUST_8123"
+    });
+
+    return mapping;
+  }
   /* ========= SIDEBAR NAVIGATION ========= */
   sidebarButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -68,6 +82,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (allData[simplified]) {
         const countryData = allData[simplified].country_aggregate_data;
+        const userMapping = createUserMapping(allData[simplified].users);
+        localStorage.setItem("userMapping", JSON.stringify(userMapping));
         currency = countryData.Currency || "USD";
         countryNameEl.textContent = simplified;
         currencySymbolEl.textContent = currency;
@@ -281,4 +297,44 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
     }
   }
+  function loadCountryAndUser(country, userId) {
+    const countryData = allData[country]?.country_aggregate_data;
+    const usersInCountry = allData[country]?.users || {};
+    const userData = usersInCountry[userId];
+
+    if (!countryData || !userData) {
+      userSummary.innerHTML = `<p>No data available for this user or country.</p>`;
+      return;
+    }
+
+    currency = countryData.Currency;
+    countryNameEl.textContent = country;
+    currencySymbolEl.textContent = currency;
+
+    // Render UI sections
+    renderUserSummary(userData, countryData, userId, country);
+    renderTotals(userData.total_spending, currency);
+    renderCategories(userData.categories, countryData.Categories, currency);
+    renderInsights(userData.categories);
+    updateIncomeStats();
+  }
+  userIdForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const friendlyId = userIdInput.value.trim();
+    const mapping = JSON.parse(localStorage.getItem("userMapping")) || {};
+    const realUserId = mapping[friendlyId];
+
+    if (!realUserId) {
+      userIdError.textContent = "That user number does not exist.";
+      return;
+    }
+
+    selectedUser = realUserId;
+    localStorage.setItem("selectedUser", selectedUser);
+    userIdError.textContent = "";
+
+    // Now load using the real data ID
+    loadCountryAndUser(selectedCountry, selectedUser);
+  });
 });
