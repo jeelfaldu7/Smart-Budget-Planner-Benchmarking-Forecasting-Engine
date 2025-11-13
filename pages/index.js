@@ -7,6 +7,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const allSections = document.querySelectorAll("section");
   const navLinks = document.querySelectorAll(".header__nav_bar-item");
   const sections = document.querySelectorAll(".content");
+  const expenseForm = document.getElementById("expense__form");
+
+  //FORM VALIDATION
+  // const expenseFormValidator = new FormValidator(
+  //   expenseValidationConfig,
+  //   expenseForm
+  // );
+  // expenseFormValidator.enableValidation();
 
   const incomeForm = document.getElementById("income__form");
   const incomeInput = document.getElementById("income");
@@ -19,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const currencySymbolEl = document.getElementById("currency__symbol");
 
   // Expenses
-  const expenseForm = document.getElementById("expense__form");
   const expenseList = document.getElementById("expense__list");
   const userIdForm = document.getElementById("user__id__form");
   const userIdInput = document.getElementById("user__id__input");
