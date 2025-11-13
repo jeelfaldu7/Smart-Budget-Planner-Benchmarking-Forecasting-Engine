@@ -35,6 +35,15 @@
 
       <main class="main">
         <section id="dashboard" class="module active">
+          <div class="module__card">
+            <h3>Your Profile</h3>
+            <form id="user__id__form">
+              <label for="user__id__input">Enter User ID:</label>
+              <input type="text" id="user__id__input" placeholder="" required />
+              <button type="submit">Load My Data</button>
+              <p id="user__id__error" class="error__message"></p>
+            </form>
+          </div>
           <h2>Dashboard Overview</h2>
           <div class="module__content">
             <div class="module__card">

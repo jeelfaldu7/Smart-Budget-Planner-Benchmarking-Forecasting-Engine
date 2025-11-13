@@ -50,3 +50,37 @@
   border-radius: 6px;
   box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.05);
 }
+
+#user__id__form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#user__id__input {
+  padding: 10px;
+  border: 1px solid #d0d5dd;
+  border-radius: 6px;
+  background: #f9fafb;
+  font-size: 0.9rem;
+}
+
+#user__id__form button {
+  background: #85bb65; /* Dollar bill green */
+  color: white;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#user__id__form button:hover {
+  background: #6ea556;
+}
+
+.error__message {
+  color: #dc3545;
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
