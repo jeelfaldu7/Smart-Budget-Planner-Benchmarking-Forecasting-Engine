@@ -3,7 +3,7 @@ export default class FormValidator {
     this._config = config;
     this._formEl = formEl;
     this._inputs = Array.from(formEl.querySelectorAll(config.inputSelector));
-    this._submitBtn = formEl.querySelector(config.submitButtonSelector);
+    this._submitBtn = formEl.querySelector("config.submitButtonSelector");
     this._todayISO = new Date().toISOString().slice(0, 10);
   }
 

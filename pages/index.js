@@ -8,14 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll(".header__nav_bar-item");
   const sections = document.querySelectorAll(".content");
 
-  const expenseForm = document.getElementById("expense__form");
-
-  const expenseFormValidator = new FormValidator(
-    expenseValidationConfig,
-    expenseForm
-  );
-  expenseFormValidator.enableValidation();
-
   const incomeForm = document.getElementById("income__form");
   const incomeInput = document.getElementById("income");
   const incomeValue = document.getElementById("income__value");
@@ -37,7 +29,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let chartInstance = null;
   let allData = {};
   let currency = "";
-
+  const expenseFormValidator = new FormValidator(
+    expenseValidationConfig,
+    expenseForm
+  );
+  expenseFormValidator.enableValidation();
   /* ========= SIDEBAR NAVIGATION ========= */
   sidebarButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
