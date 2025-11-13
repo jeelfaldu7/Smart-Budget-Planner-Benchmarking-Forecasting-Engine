@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const currencySymbolEl = document.getElementById("currency__symbol");
 
   // Expenses
-  const expenseForm = document.getElementById("expense__form");
   const expenseList = document.getElementById("expense__list");
 
   // State variables

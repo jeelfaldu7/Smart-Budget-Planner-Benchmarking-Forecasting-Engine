@@ -77,8 +77,8 @@ export default class FormValidator {
 
     if (input.id === "description") {
       const t = input.value.trim();
-      if (t.length > 0 && t.length < 3)
-        errorMessage = "Min 3 characters or leave it empty.";
+      if (t.length > 0 && t.length < 2)
+        errorMessage = "Min 2 characters or leave it empty.";
     }
 
     const errorEl = this._formEl.querySelector(`#${input.id}-error`);
